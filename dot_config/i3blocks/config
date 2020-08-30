@@ -34,9 +34,9 @@ instance=wlp11s0f3u1
 interval=5
 label=<span color="#ffb86c"> </span>
 
-[new-vpn]
+[openvpn]
 command=~/.config/i3blocks/blocks/openvpn/openvpn
-interval=1
+interval=20
 label=<span color="#8be9fd"> </span>
 
 [home]

@@ -112,7 +112,8 @@ bindsym $mod+Shift+c exec flameshot gui
 floating_modifier $mod
 
 # Start a terminal.
-bindsym $mod+Return exec alacritty
+#bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec terminator
 
 # Kill focused window.
 bindsym $mod+Shift+q kill
@@ -243,7 +244,7 @@ bindsym $mod+Pause mode "$mode_system"
 
 # Startup programs
 
-#exec --no-startup-id picom --config ~/.config/picom/picom.conf
+exec --no-startup-id picom --config ~/.config/picom/picom.conf
 
 # UDisks front-end for managing removable media.
 exec --no-startup-id udiskie -ans &
@@ -258,7 +259,7 @@ exec --no-startup-id redshift-gtk &
 exec --no-startup-id flameshot &
 
 #dual Monitor
-exec xrandr --output HDMI2 --left-of VGA1
+#exec xrandr --output HDMI2 --left-of VGA1
 
 #networking
 exec --no-startup-id nm-applet &
