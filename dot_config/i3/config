@@ -263,3 +263,6 @@ exec --no-startup-id flameshot &
 
 #networking
 exec --no-startup-id nm-applet &
+
+#virtualbox
+exec --no-startup-id VBoxClient-all &
