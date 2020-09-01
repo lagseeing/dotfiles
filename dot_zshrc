@@ -15,13 +15,13 @@ alias ip='ip -c'
 alias rm='rm -i'
 alias x='ranger'
 alias c='cmus'
-alias h='htop'
+alias h='gotop'
 
 # Show OS info when opening a new terminal
 neofetch
 
 # Set name of the theme to load.
-ZSH_THEME="powerlevel10k/powerlevel10k"
+ZSH_THEME="sunrise"
 
 # Command auto-correction.
 ENABLE_CORRECTION="true"
@@ -50,6 +50,3 @@ complete -o nospace -C /usr/bin/vault vault
 complete -o nospace -C /usr/bin/terraform terraform
 
 export VAULT_SKIP_VERIFY=true
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
