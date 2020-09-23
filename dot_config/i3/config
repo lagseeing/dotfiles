@@ -1,7 +1,7 @@
 # vim: set et fenc=utf-8 ft=conf sts=4 sw=4 ts=8 tw=80 :
 # 
 # Author: microfracture / https://linuxious.com
-# Updated: 2020-04-12
+# Updated: 2020-09-23
 
 
 # =============================================================================
@@ -60,7 +60,7 @@ bar
     position bottom
     status_command i3blocks
     i3bar_command i3bar
-      font pango: Ubuntu Regular 11
+      font pango: Ubuntu Regular 10
       colors
       {
         #                   Border Background Text
@@ -80,7 +80,7 @@ bar
 # Assign windows to their respective workspaces.
 assign [class="firefox"] $WS1
 assign [class="Thunderbird|discord"] $WS2
-assign [class="Sublime_text"] $WS4
+assign [class="Sublime_text|code"] $WS4
 assign [class="dolphin-emu|mednafen|Lutris|Hiro"] $WS5
 assign [class="mpv|Popcorn-Time|Kodi"] $WS6
 assign [class="Gimp|libreoffice|JDownloader"] $WS7
@@ -112,8 +112,8 @@ bindsym $mod+Shift+c exec flameshot gui
 floating_modifier $mod
 
 # Start a terminal.
-#bindsym $mod+Return exec alacritty
-bindsym $mod+Return exec terminator
+bindsym $mod+Return exec alacritty
+#bindsym $mod+Return exec terminator
 
 # Kill focused window.
 bindsym $mod+Shift+q kill
@@ -265,4 +265,4 @@ exec --no-startup-id flameshot &
 exec --no-startup-id nm-applet &
 
 #virtualbox
-exec --no-startup-id VBoxClient-all &
+#exec --no-startup-id VBoxClient-all &

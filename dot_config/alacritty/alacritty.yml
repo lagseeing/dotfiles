@@ -82,7 +82,7 @@ colors:
    white:   '0xF9F8F5'
 
 # Visual bell
-visual_bell:
+bell:
   animation: EaseOutExpo
   duration: 0
 
@@ -105,7 +105,7 @@ cursor:
   style: Block
   unfocused_hollow: true
 
-dynamic_title: true
+window.dynamic_title: true
 
 live_config_reload: true
 
