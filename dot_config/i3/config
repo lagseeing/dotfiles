@@ -80,7 +80,7 @@ bar
 # Assign windows to their respective workspaces.
 assign [class="firefox"] $WS1
 assign [class="Thunderbird|discord"] $WS2
-assign [class="Sublime_text|code"] $WS4
+assign [class="Sublime_text|code|Code"] $WS4
 assign [class="dolphin-emu|mednafen|Lutris|Hiro"] $WS5
 assign [class="mpv|Popcorn-Time|Kodi"] $WS6
 assign [class="Gimp|libreoffice|JDownloader"] $WS7
