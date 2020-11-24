@@ -106,7 +106,7 @@ bindsym $mod+d exec rofi -show drun -columns 3
 bindsym Mod1+Tab exec --no-startup-id exec rofi -show window -font "Terminus 10" -lines 6 -i -separator-style solid -opacity "90"
 
 # Take a screenshot.
-bindsym $mod+Shift+c exec flameshot gui
+bindsym Control + Print exec flameshot gui
 
 # Use Mouse+$mod to drag floating windows to their wanted position.
 floating_modifier $mod
@@ -266,3 +266,6 @@ exec --no-startup-id nm-applet &
 
 #virtualbox
 #exec --no-startup-id VBoxClient-all &
+
+#Laptop
+exec setxkbmap latam
