@@ -1,3 +1,6 @@
+[user]
+	email = razondota@gmail.com
+	name = Antonio Requena
 [commit]
 	#gpgsign = true
 	template = ~/.gitmessage
@@ -23,5 +26,3 @@
 	insteadOf = https://gitlab.com/
 [url "ssh://git@bitbucket.org/"]
 	insteadOf = https://bitbucket.org/
-[include]
-	path = .gitconfig_user
