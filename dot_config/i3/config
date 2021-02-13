@@ -266,6 +266,3 @@ exec --no-startup-id nm-applet &
 
 #virtualbox
 #exec --no-startup-id VBoxClient-all &
-
-#Laptop
-exec setxkbmap latam
