@@ -1,7 +1,8 @@
 # vim: set et fenc=utf-8 ft=conf sts=4 sw=4 ts=8 tw=80 :
 # 
 # Author: microfracture / https://linuxious.com
-# Updated: 2020-09-23
+# Fork: lagseeing / https://lagseeing.me
+# Updated: 2021-03-17
 
 
 # =============================================================================
@@ -9,16 +10,16 @@
 # =============================================================================
 
 # Set workspace icons
-set $WS1 ""
-set $WS2 ""
-set $WS3 ""
-set $WS4 ""
-set $WS5 ""
-set $WS6 ""
-set $WS7 ""
-set $WS8 ""
-set $WS9 ""
-set $WS0 ""
+set $WS1 "1:  "
+set $WS2 "2:  "
+set $WS3 "3:  "
+set $WS4 "4:  "
+set $WS5 "5:  "
+set $WS6 "6:  "
+set $WS7 "7:  "
+set $WS8 "8:  "
+set $WS9 "9:  "
+set $WS0 "0:  "
  
 # Hide titlebar
 new_window pixel
@@ -43,12 +44,13 @@ set $magenta #ff79c6
 set $comment #6272a4
 set $purple  #bd93f9
 
-# Set some nice colors      border   background text     indicator
-client.focused              $comment $comment   $fg      $comment
-client.unfocused            $bg      $bg        $cyan    $bg
-client.focused_inactive     $bg      $bg        $green   $bg
-client.urgent               $bg      $bg        $magenta $bg
-client.placeholder          $bg      $bg        $cyan    $bg
+# class                 border  bground text    indicator child_border
+client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
+client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
+client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
+client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
+client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
+client.background       #F8F8F2
 
 
 # =============================================================================
@@ -60,15 +62,18 @@ bar
     position bottom
     status_command i3blocks
     i3bar_command i3bar
-      font pango: Ubuntu Regular 10
+      font pango: SauceCodePro Nerd Font 9
       colors
       {
-        #                   Border Background Text
-            focused_workspace   $fg    $fg        $bg
-            active_workspace    $bg    $bg        $purple
-            inactive_workspace  $bg    $bg        $cyan
-            urgent_workspace    $bg    $bg        $magenta
-            background          $bg
+        background #282A36
+        statusline #F8F8F2
+        separator  #44475A
+
+        focused_workspace  #44475A #44475A #F8F8F2
+        active_workspace   #282A36 #44475A #F8F8F2
+        inactive_workspace #282A36 #282A36 #BFBFBF
+        urgent_workspace   #FF5555 #FF5555 #F8F8F2
+        binding_mode       #FF5555 #FF5555 #F8F8F2
     }
 }
 
@@ -175,6 +180,7 @@ bindsym $mod+6 workspace $WS6
 bindsym $mod+7 workspace $WS7
 bindsym $mod+8 workspace $WS8
 bindsym $mod+9 workspace $WS9
+bindsym $mod+0 workspace $WS0
 
 # Move focused container to workspace.
 bindsym $mod+Shift+1 move container to workspace $WS1
@@ -186,6 +192,7 @@ bindsym $mod+Shift+6 move container to workspace $WS6
 bindsym $mod+Shift+7 move container to workspace $WS7
 bindsym $mod+Shift+8 move container to workspace $WS8
 bindsym $mod+Shift+9 move container to workspace $WS9
+bindsym $mod+Shift+0 move container to workspace $WS0
 
 # Reload the configuration file.
 bindsym $mod+Shift+comma reload
@@ -263,6 +270,3 @@ exec --no-startup-id flameshot &
 
 #networking
 exec --no-startup-id nm-applet &
-
-#virtualbox
-#exec --no-startup-id VBoxClient-all &
