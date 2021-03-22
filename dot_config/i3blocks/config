@@ -48,7 +48,7 @@ interval=2
 label=<span color="#50fa7b"><b>CPU: </b></span>
 
 [cpu_temperature]
-command=sensors | awk '{ if ($1 == "CPU" && $2 == "Temperature:") { gsub(/[+°C]/, "") ; printf "%i<span color=\"#50fa7b\">糖 </span>\n", $3 } }'
+command=sensors | grep "Core 0" | awk '{print $3}' ; printf "%i<span color=\"#50fa7b\">糖 </span>\n", $3 } }'
 interval=2
 
 [memory]
@@ -77,15 +77,6 @@ interval=1
 label=<span color="#ff79c6"> </span>
 
 [date]
-command=echo "`date +'%a %d %b'` <b>`date +'%T'`</b> "; [[ -z "${BLOCK_BUTTON}" ]] || gsimplecal &
+command=echo "`date +'%a %d %b'`"; [[ -z "${BLOCK_BUTTON}" ]] || gsimplecal &
 interval=60
 label=<span color="#8be9fd"> </span>
-
-[shutdown_menu]
-full_text=<span color="#50fa7b"> </span>
-command=~/.config/i3blocks/blocks/shutdown_menu/shutdown_menu
-ROFI_TEXT=Menu:
-ROFI_OPTIONS=-no-config -location 3 -yoffset 29 -width 5 -xoffset 5 -bw 0 -border 0 -theme ~/.config/rofi/menu.rasi
-ENABLE_CONFIRMATIONS=true
-LAUNCHER=rofi
-LOCKSCRIPT=betterlockscreen -l dimblur
