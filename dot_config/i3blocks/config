@@ -77,7 +77,7 @@ interval=1
 label=<span color="#ff79c6"> </span>
 
 [date]
-command=date '+%Y %B%d %A'
+command=echo "`date +'%a %d %b'` <b>`date +'%T'`</b> "; [[ -z "${BLOCK_BUTTON}" ]] || gsimplecal &
 interval=60
 label=<span color="#8be9fd"> </span>
 

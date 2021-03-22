@@ -95,6 +95,7 @@ assign [class="Virt-manager|VirtualBox Machine|VirtualBox Manager"] $WS9
 
 # Assign floating windows.
 for_window [class="feh|mpv|Pavucontrol|Steam|KeePass2"] floating enable
+for_window [class="(?i)gsimplecal"] floating enable, move position mouse, move down $height px
 
 
 # =============================================================================
