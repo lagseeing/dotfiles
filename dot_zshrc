@@ -16,6 +16,7 @@ alias rm='rm -i'
 alias x='ranger'
 alias c='cmus'
 alias h='gotop'
+alias sail='./vendor/bin/sail'
 
 # Show OS info when opening a new terminal
 neofetch
