@@ -1,0 +1,273 @@
+# vim: set et fenc=utf-8 ft=conf sts=4 sw=4 ts=8 tw=80 :
+# 
+# Author: microfracture / https://linuxious.com
+# Fork: lagseeing / https://lagseeing.me
+# Updated: 2021-03-17
+
+
+# =============================================================================
+# Initial setup
+# =============================================================================
+
+# Set workspace icons
+set $WS1 "1:  "
+set $WS2 "2:  "
+set $WS3 "3:  "
+set $WS4 "4:  "
+set $WS5 "5:  "
+set $WS6 "6:  "
+set $WS7 "7:  "
+set $WS8 "8:  "
+set $WS9 "9:  "
+set $WS0 "0:  "
+ 
+# Hide titlebar
+new_window pixel
+
+# Assign miscellaneous settings
+font pango:Terminus 10
+hide_edge_borders both
+
+gaps inner 4
+
+# =============================================================================
+# Assign colors
+# =============================================================================
+
+# Defining colors
+set $bg      #282A36
+set $lg      #44475a
+set $fg      #f8f8f2
+set $cyan    #8be9fd
+set $green   #50fa7b
+set $magenta #ff79c6
+set $comment #6272a4
+set $purple  #bd93f9
+
+# class                 border  bground text    indicator child_border
+client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
+client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
+client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
+client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
+client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
+client.background       #F8F8F2
+
+
+# =============================================================================
+# Configure bar
+# =============================================================================
+
+bar
+{
+    position bottom
+    status_command i3blocks
+    i3bar_command i3bar
+      font pango: SauceCodePro Nerd Font 9
+      colors
+      {
+        background #282A36
+        statusline #F8F8F2
+        separator  #44475A
+
+        focused_workspace  #44475A #44475A #F8F8F2
+        active_workspace   #282A36 #44475A #F8F8F2
+        inactive_workspace #282A36 #282A36 #BFBFBF
+        urgent_workspace   #FF5555 #FF5555 #F8F8F2
+        binding_mode       #FF5555 #FF5555 #F8F8F2
+    }
+}
+
+
+# =============================================================================
+# Assign window behavior
+# =============================================================================
+
+# Assign windows to their respective workspaces.
+assign [class="firefox"] $WS1
+assign [class="Thunderbird|discord"] $WS2
+assign [class="Sublime_text|code|Code"] $WS4
+assign [class="dolphin-emu|mednafen|Lutris|Hiro"] $WS5
+assign [class="mpv|Popcorn-Time|Kodi"] $WS6
+assign [class="Gimp|libreoffice|JDownloader"] $WS7
+assign [class="Godot"] $WS8
+assign [class="Virt-manager|VirtualBox Machine|VirtualBox Manager"] $WS9
+
+
+# Assign floating windows.
+for_window [class="feh|mpv|Pavucontrol|Steam|KeePass2"] floating enable
+for_window [class="(?i)gsimplecal"] floating enable, move position mouse, move down $height px
+
+
+# =============================================================================
+# Keybinds
+# =============================================================================
+
+# Set modifier to the 'Alt' key.
+set $mod Mod1
+
+# Application launcher.
+bindsym $mod+d exec rofi -show drun -columns 3
+
+# Alt+Tab window switching.
+bindsym Mod1+Tab exec --no-startup-id exec rofi -show window -font "Terminus 10" -lines 6 -i -separator-style solid -opacity "90"
+
+# Take a screenshot.
+bindsym Control + Print exec flameshot gui
+
+# Use Mouse+$mod to drag floating windows to their wanted position.
+floating_modifier $mod
+
+# Start a terminal.
+bindsym $mod+Return exec alacritty
+#bindsym $mod+Return exec terminator
+
+# Kill focused window.
+bindsym $mod+Shift+q kill
+
+# Change focus.
+bindsym $mod+h focus left
+bindsym $mod+t focus down
+bindsym $mod+n focus up
+bindsym $mod+s focus right
+
+# Alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Move focused window.
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+t move down
+bindsym $mod+Shift+n move up
+bindsym $mod+Shift+s move right
+
+# Alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Split in horizontal orientation.
+bindsym $mod+e split h
+
+# Split in vertical orientation.
+bindsym $mod+k split v
+
+# Enter fullscreen mode for the focused container.
+bindsym $mod+u fullscreen
+
+# Change container layout (stacked, tabbed, toggle split).
+bindsym $mod+o layout stacking
+bindsym $mod+comma layout tabbed
+bindsym $mod+period layout toggle split
+
+# Toggle tiling / floating.
+bindsym $mod+Shift+space floating toggle
+
+# Change focus between tiling / floating windows.
+bindsym $mod+space focus mode_toggle
+
+# Focus the parent container.
+bindsym $mod+a focus parent
+
+# Switch to workspace.
+bindsym $mod+1 workspace $WS1
+bindsym $mod+2 workspace $WS2
+bindsym $mod+3 workspace $WS3
+bindsym $mod+4 workspace $WS4
+bindsym $mod+5 workspace $WS5
+bindsym $mod+6 workspace $WS6
+bindsym $mod+7 workspace $WS7
+bindsym $mod+8 workspace $WS8
+bindsym $mod+9 workspace $WS9
+bindsym $mod+0 workspace $WS0
+
+# Move focused container to workspace.
+bindsym $mod+Shift+1 move container to workspace $WS1
+bindsym $mod+Shift+2 move container to workspace $WS2
+bindsym $mod+Shift+3 move container to workspace $WS3
+bindsym $mod+Shift+4 move container to workspace $WS4
+bindsym $mod+Shift+5 move container to workspace $WS5
+bindsym $mod+Shift+6 move container to workspace $WS6
+bindsym $mod+Shift+7 move container to workspace $WS7
+bindsym $mod+Shift+8 move container to workspace $WS8
+bindsym $mod+Shift+9 move container to workspace $WS9
+bindsym $mod+Shift+0 move container to workspace $WS0
+
+# Reload the configuration file.
+bindsym $mod+Shift+comma reload
+
+# Restart i3 inplace (preserves your layout/session, can be used to upgrade i3).
+bindsym $mod+Shift+p restart
+
+# Exit i3 (logs you out of your X session).
+bindsym $mod+Shift+period exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+# These bindings trigger as soon as you enter the resize mode.
+
+# Pressing left will shrink the window’s width.
+# Pressing right will grow the window’s width.
+# Pressing up will shrink the window’s height.
+# Pressing down will grow the window’s height.
+bindsym h resize shrink width 10 px or 10 ppt
+bindsym t resize grow height 10 px or 10 ppt
+bindsym n resize shrink height 10 px or 10 ppt
+bindsym s resize grow width 10 px or 10 ppt
+
+# Same bindings, but for the arrow keys.
+bindsym Left resize shrink width 10 px or 10 ppt
+bindsym Down resize grow height 10 px or 10 ppt
+bindsym Up resize shrink height 10 px or 10 ppt
+bindsym Right resize grow width 10 px or 10 ppt
+
+# Back to normal: Enter or Escape.
+bindsym Return mode "default"
+bindsym Escape mode "default"
+}
+bindsym $mod+p mode "resize"
+
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id $Locker, mode "default"
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
+
+    # Back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+Pause mode "$mode_system"
+
+
+# =============================================================================
+# Launch initial applications
+# =============================================================================
+
+# Startup programs
+
+exec --no-startup-id picom --config ~/.config/picom/picom.conf
+
+# UDisks front-end for managing removable media.
+exec --no-startup-id udiskie -ans &
+
+# Set wallpaper.
+exec --no-startup-id nitrogen --restore &
+
+# Adjust monitor color temperature based on time.
+exec --no-startup-id redshift-gtk &
+
+# Screenshots.
+exec --no-startup-id flameshot &
+
+#dual Monitor
+#exec xrandr --output HDMI2 --left-of VGA1
+
+#networking
+exec --no-startup-id nm-applet &

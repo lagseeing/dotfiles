@@ -1,0 +1,54 @@
+#  _____    _
+# |__  /___| |__  _ __ ___
+#   / // __| '_ \| '__/ __|
+#  / /_\__ \ | | | | | (__
+# /____|___/_| |_|_|  \___|
+
+# Aliases for a few useful commands
+alias mirrorUpdate='sudo reflector --latest 250 --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
+alias ls='lsd'
+alias l='ls -l'
+alias la='ls -a'
+alias lla='ls -la'
+alias lt='ls --tree'
+alias ip='ip -c'
+alias rm='rm -i'
+alias x='ranger'
+alias c='cmus'
+alias h='gotop'
+alias docker-compose='docker compose'
+alias sail='./vendor/bin/sail'
+
+# Show OS info when opening a new terminal
+neofetch
+
+# Set name of the theme to load.
+ZSH_THEME="sunrise"
+
+# Command auto-correction.
+ENABLE_CORRECTION="true"
+
+# Command execution time stamp shown in the history command output.
+HIST_STAMPS="dd/mm/yyyy"
+DISABLE_LS_COLORS="true"
+
+# Plugins to load
+plugins=(
+    colorize
+    git
+    gitfast
+    history-substring-search
+    zsh-autosuggestions
+    zsh-completions
+    zsh-history-substring-search
+    zsh-syntax-highlighting
+    ssh-agent
+)
+
+setopt HIST_IGNORE_SPACE
+autoload -U compinit && compinit
+source $ZSH/oh-my-zsh.sh
+complete -o nospace -C /usr/bin/vault vault
+complete -o nospace -C /usr/bin/terraform terraform
+
+export VAULT_SKIP_VERIFY=true
