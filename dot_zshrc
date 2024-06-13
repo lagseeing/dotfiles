@@ -17,6 +17,8 @@ alias rm='rm -i'
 alias x='ranger'
 alias h='htop'
 
+ZSH_THEME="sunrise"
+
 setopt COMPLETE_ALIASES
 setopt HIST_FIND_NO_DUPS
 setopt HIST_IGNORE_ALL_DUPS
@@ -59,7 +61,6 @@ plugins=(
     kubectl
     rust
     safe-paste
-    tmux
     virtualenv
 )
 
@@ -70,7 +71,6 @@ do
     source "$script"
 done < <(find /usr/share/zsh/plugins/ -maxdepth 2 -type f -name "*.zsh" ! -name '*plugin.zsh')
 source $ZSH/oh-my-zsh.sh
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
