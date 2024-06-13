@@ -62,15 +62,8 @@ plugins=(
     rust
     safe-paste
     virtualenv
+    ssh-agent
 )
 
-# Source Oh My ZSH for plugins and zsh-autosuggestions, zsh-syntax-highlighting,
-# zsh-history-substring-search and the powerlevel10k theme.
-while IFS= read -r script
-do
-    source "$script"
-done < <(find /usr/share/zsh/plugins/ -maxdepth 2 -type f -name "*.zsh" ! -name '*plugin.zsh')
 source $ZSH/oh-my-zsh.sh
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
