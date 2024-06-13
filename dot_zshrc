@@ -3,9 +3,10 @@
 #   / // __| '_ \| '__/ __|
 #  / /_\__ \ | | | | | (__
 # /____|___/_| |_|_|  \___|
-
 # Aliases for a few useful commands
-alias mirrorUpdate='sudo reflector --latest 250 --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
+
+alias mirrorUpdate='reflector --country us --latest 15 --protocol https --sort rate --save /etc/pacman.d/mirrorlist --verbose'
+alias pacmanGhost='~/.scripts/pacman.sh'
 alias ls='lsd'
 alias l='ls -l'
 alias la='ls -a'
@@ -14,41 +15,62 @@ alias lt='ls --tree'
 alias ip='ip -c'
 alias rm='rm -i'
 alias x='ranger'
-alias c='cmus'
-alias h='gotop'
-alias docker-compose='docker compose'
-alias sail='./vendor/bin/sail'
+alias h='htop'
 
-# Show OS info when opening a new terminal
-neofetch
-
-# Set name of the theme to load.
-ZSH_THEME="sunrise"
-
-# Command auto-correction.
-ENABLE_CORRECTION="true"
-
-# Command execution time stamp shown in the history command output.
-HIST_STAMPS="dd/mm/yyyy"
-DISABLE_LS_COLORS="true"
-
-# Plugins to load
-plugins=(
-    colorize
-    git
-    gitfast
-    history-substring-search
-    zsh-autosuggestions
-    zsh-completions
-    zsh-history-substring-search
-    zsh-syntax-highlighting
-    ssh-agent
-)
-
+setopt COMPLETE_ALIASES
+setopt HIST_FIND_NO_DUPS
+setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_SPACE
-autoload -U compinit && compinit
-source $ZSH/oh-my-zsh.sh
+setopt appendhistory
+setopt autocd
+setopt extendedglob
+setopt incappendhistory
+setopt nomatch
+setopt notify
+setopt sharehistory
+
+unsetopt beep
+bindkey -e
+autoload -Uz compinit promptinit bashcompinit
+compinit
+promptinit
+bashcompinit
+zstyle :compinstall filename '$HOME/.zshrc'
 complete -o nospace -C /usr/bin/vault vault
 complete -o nospace -C /usr/bin/terraform terraform
 
-export VAULT_SKIP_VERIFY=true
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+plugins=(
+    colorize
+    copyfile
+    docker
+    docker-compose
+    emacs
+    git
+    gitfast
+    golang
+    history-substring-search
+    kubectl
+    rust
+    safe-paste
+    tmux
+    virtualenv
+)
+
+# Source Oh My ZSH for plugins and zsh-autosuggestions, zsh-syntax-highlighting,
+# zsh-history-substring-search and the powerlevel10k theme.
+while IFS= read -r script
+do
+    source "$script"
+done < <(find /usr/share/zsh/plugins/ -maxdepth 2 -type f -name "*.zsh" ! -name '*plugin.zsh')
+source $ZSH/oh-my-zsh.sh
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

@@ -27,4 +27,4 @@
 [url "ssh://git@bitbucket.org/"]
 	insteadOf = https://bitbucket.org/
 [init]
-        defaultBranch = main
+    defaultBranch = main
