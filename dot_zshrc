@@ -17,6 +17,7 @@ alias h='htop'
 alias sail='./vendor/bin/sail'
 alias zeron='sudo systemctl start zerotier-one.service'
 alias zeroff='sudo systemctl stop zerotier-one.service'
+alias zerstat='sudo systemctl status zerotier-one.service'
 
 ZSH_THEME="sunrise"
 
