@@ -17,6 +17,7 @@ alias rm='rm -i'
 alias x='ranger'
 alias h='htop'
 alias sail='./vendor/bin/sail'
+alias zero='sudo systemctl start zerotier-one.service'
 
 ZSH_THEME="sunrise"
 
