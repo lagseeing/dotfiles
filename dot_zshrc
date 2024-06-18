@@ -5,8 +5,6 @@
 # /____|___/_| |_|_|  \___|
 # Aliases for a few useful commands
 
-alias mirrorUpdate='reflector --country us --latest 15 --protocol https --sort rate --save /etc/pacman.d/mirrorlist --verbose'
-alias pacmanGhost='~/.scripts/pacman.sh'
 alias ls='lsd'
 alias l='ls -l'
 alias la='ls -a'
@@ -17,7 +15,8 @@ alias rm='rm -i'
 alias x='ranger'
 alias h='htop'
 alias sail='./vendor/bin/sail'
-alias zero='sudo systemctl start zerotier-one.service'
+alias zeron='sudo systemctl start zerotier-one.service'
+alias zeroff='sudo systemctl stop zerotier-one.service'
 
 ZSH_THEME="sunrise"
 
